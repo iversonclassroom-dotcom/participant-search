@@ -1,0 +1,2 @@
+let data=[];fetch('participants.json').then(r=>r.json()).then(j=>data=j);
+function s(){let q=document.getElementById('q').value.toLowerCase();let o=document.getElementById('out');o.innerHTML='';if(!q)return;data.filter(x=>Object.values(x).some(v=>String(v).toLowerCase().includes(q))).slice(0,20).forEach(x=>{let d=document.createElement('div');d.className='card';let h='';for(let k in x)h+=`<div><b>${k}:</b> ${x[k]??''}</div>`;d.innerHTML=h;o.appendChild(d);});}
