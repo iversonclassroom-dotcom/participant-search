@@ -5,6 +5,7 @@ fetch('participants.json?v=' + Date.now())
   .then(response => response.json())
   .then(jsonData => {
     data = jsonData;
+    s(); // <--- Automatically trigger search as soon as JSON finishes loading!
   })
   .catch(error => console.error('Error loading JSON data:', error));
 
@@ -16,12 +17,12 @@ function s() {
   // If search box is empty, stop and show nothing
   if (!q) return;
 
-  // Filter records matching the search query
+  // Filter records matching search query
   let filtered = data.filter(item => 
     Object.values(item).some(val => String(val).toLowerCase().includes(q))
   );
 
-  // Render up to top 20 matching results
+  // Render top 20 matching results
   filtered.slice(0, 20).forEach(item => {
     let card = document.createElement('div');
     card.className = 'card';
