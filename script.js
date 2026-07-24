@@ -1,7 +1,7 @@
 let data = [];
 
 // Fetch data from participants.json when the page loads
-fetch('participants.json')
+fetch('participants.json?v=' + Date.now())
   .then(response => response.json())
   .then(jsonData => {
     data = jsonData;
